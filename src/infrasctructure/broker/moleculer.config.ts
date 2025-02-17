@@ -2,7 +2,7 @@ import { BrokerOptions } from 'moleculer';
 
 const brokerOptions: BrokerOptions = {
   nodeID: 'gateway-service-node',
-  transporter: 'NATS',
+  transporter: process.env.NATS_URL,
   logLevel: 'info',
   requestTimeout: 5000,
   retryPolicy: {

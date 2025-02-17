@@ -1,0 +1,19 @@
+services:
+  nats:
+    image: nats
+    container_name: ms-nats
+    ports:
+      - '4222:4222'
+
+  gateway:
+    container_name: jeulog-gateway
+    build:
+      context: ./
+    environment:
+      - NODE_PATH=/usr/src
+      - NATS_URL=nats://nats:4222
+    command: ['pm2-runtime', 'start', '--interpreter', 'tsx', 'index.ts']
+    ports:
+      - '3000:3000'
+    depends_on:
+      - nats
