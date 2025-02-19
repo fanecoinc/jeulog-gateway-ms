@@ -12,6 +12,19 @@ broker.createService({
     port: 3000,
     routes,
   },
+  methods: {
+    onError(_req, res, err) {
+      const statusCode = err.code ?? 500;
+
+      res.writeHead(statusCode, { 'Content-Type': 'application/json' });
+      res.end(
+        JSON.stringify({
+          error: err.type || 'UNKNOWN_ERROR',
+          message: err.message || 'Erro desconhecido',
+        })
+      );
+    },
+  },
 });
 
 export default broker;
