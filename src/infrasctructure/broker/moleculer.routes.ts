@@ -12,6 +12,7 @@ const routes = [
       'GET /users/:id': 'user.getUserById',
       'POST /users': 'user.createUser',
       'PUT /users/:id': 'user.editUser',
+      'PUT /users/passwordReset/:id': 'user.resetPassword',
     },
   },
 ];
