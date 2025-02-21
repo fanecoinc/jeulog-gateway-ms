@@ -4,8 +4,12 @@ import ApiGatewayService from 'moleculer-web';
 import { routes } from './moleculer.routes';
 import { JWT_SECRET } from '../database/config';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import OpenApiService from './OpenapiService';
+import { ServiceSchema } from 'moleculer';
 
 const broker: ServiceBroker = new ServiceBroker(brokerOptions);
+
+broker.createService(OpenApiService as ServiceSchema);
 
 interface CustomJwtPayload extends JwtPayload {
   user: any;
@@ -27,6 +31,9 @@ broker.createService({
   settings: {
     port: 3000,
     routes,
+  },
+  cors: {
+    origin: '*',
   },
   methods: {
     onError(_req, res, err) {

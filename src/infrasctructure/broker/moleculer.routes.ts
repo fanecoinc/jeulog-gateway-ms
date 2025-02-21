@@ -22,6 +22,23 @@ const routes = [
       'PUT /users/passwordReset/:id': 'user.resetPassword',
     },
     mappingPolicy: 'all',
+    openapi: {
+      security: [{ BearerAuth: [] }],
+    },
+  },
+  {
+    path: '/v1/docs',
+    aliases: {
+      'GET /': 'openapi.ui',
+    },
+    authorization: false,
+  },
+  {
+    path: '/openapi.json',
+    aliases: {
+      'GET /': 'openapi.generateDocs',
+    },
+    authorization: false,
   },
 ];
 
