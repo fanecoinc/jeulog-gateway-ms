@@ -1,6 +1,13 @@
 const routes = [
   {
+    path: '/v1/auth',
+    aliases: {
+      'POST /user': 'user.authUser',
+    },
+  },
+  {
     path: '/v1/user-ms',
+    authorization: true,
     aliases: {
       'GET /permissions': 'user.getPermissions',
       'GET /permissions/:id': 'user.getPermissionById',
@@ -13,8 +20,8 @@ const routes = [
       'POST /users': 'user.createUser',
       'PUT /users/:id': 'user.editUser',
       'PUT /users/passwordReset/:id': 'user.resetPassword',
-      'POST /users/auth': 'user.authUser',
     },
+    mappingPolicy: 'all',
   },
 ];
 
