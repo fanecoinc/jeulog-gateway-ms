@@ -13,6 +13,7 @@ const routes = [
       'POST /users': 'user.createUser',
       'PUT /users/:id': 'user.editUser',
       'PUT /users/passwordReset/:id': 'user.resetPassword',
+      'POST /users/auth': 'user.authUser',
     },
   },
 ];
