@@ -22,8 +22,22 @@ const routes = [
       'PUT /users/passwordReset/:id': 'user.resetPassword',
     },
     mappingPolicy: 'all',
+    requiredPermissions: {
+      'GET users': 'A1',
+      'GET users/:id': 'A1',
+      'POST users': 'A2',
+      'PUT users/:id': 'A3',
+      'GET roles': 'B1',
+      'GET roles/:id': 'B1',
+      'POST roles': 'B2',
+      'PUT roles/:id': 'B3',
+    },
     openapi: {
       security: [{ BearerAuth: [] }],
+    },
+    onBeforeCall: async (ctx: any, route: any, req: any, res: any) => {
+      await ctx.service.authorize(ctx, req, res);
+      await ctx.service.checkPermission(ctx, req);
     },
   },
   {

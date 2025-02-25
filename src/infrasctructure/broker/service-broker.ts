@@ -70,14 +70,36 @@ broker.createService({
 
       return ctx;
     },
-  },
-  started() {
-    this.settings.routes.forEach((route: any) => {
-      if (route.authorization) {
-        route.onBeforeCall = (ctx: any, _route: any, req: any, res: any) =>
-          this.authorize(ctx, req, res);
+
+    async checkPermission(ctx: Context<RequestParams, Meta>, req: any) {
+      const permissions = ctx.meta.user?.permissions || [];
+      const routePermissions = this.settings.routes.find(
+        (r: any) => r.path === req.$route.path
+      )?.requiredPermissions;
+
+      if (!routePermissions) {
+        return;
       }
-    });
+
+      const validationKey = `${req.$alias.method} ${req.$alias.path}`;
+
+      const requiredPermission = routePermissions[validationKey];
+
+      if (requiredPermission === undefined) {
+        return;
+      }
+
+      if (permissions.includes(requiredPermission)) {
+        return;
+      }
+
+      if (!permissions.includes(requiredPermission)) {
+        throw new Errors.MoleculerClientError(
+          'Usuário não tem permissão para acessar o recurso',
+          403
+        );
+      }
+    },
   },
 });
 
