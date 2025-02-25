@@ -1,4 +1,4 @@
-import broker from './infrasctructure/broker/service-broker';
+import broker from './infrastructure/broker/service-broker';
 import dotenv from 'dotenv';
 import path from 'path';
 
