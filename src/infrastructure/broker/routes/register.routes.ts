@@ -8,6 +8,10 @@ export const registerRoutes = [
       'POST /tags': 'register.createTag',
       'PUT /tags/:id': 'register.editTag',
       'DELETE /tags/:id': 'register.deleteTag',
+      'GET /persons': 'register.getPersons',
+      'GET /persons/:id': 'register.getPersonById',
+      'POST /persons': 'register.createPerson',
+      'PUT /persons/:id': 'register.editPerson',
     },
     mappingPolicy: 'all',
     requiredPermissions: {
@@ -16,6 +20,10 @@ export const registerRoutes = [
       'POST /tags': 'C2',
       'PUT /tags/:id': 'C3',
       'DELETE /tags/:id': 'C3',
+      'GET /persons': 'C1',
+      'GET /persons/:id': 'C1',
+      'POST /persons': 'C2',
+      'PUT /persons/:id': 'C3',
     },
     openapi: {
       security: [{ BearerAuth: [] }],
@@ -26,19 +34,19 @@ export const registerRoutes = [
       await ctx.service.checkPermission(ctx, req);
     },
     onAfterCall: async (
-      ctx: any,
-      route: any,
+      _ctx: any,
+      _route: any,
       req: any,
       res: any,
       data: any
     ) => {
       if (req.method === 'DELETE') {
-        res.statusCode = 204; // No Content
-        return null; // DELETE geralmente não retorna nada
+        res.statusCode = 204;
+        return null;
       }
 
       if (req.method === 'POST') {
-        res.statusCode = 201; // Created
+        res.statusCode = 201;
       }
 
       return data;
