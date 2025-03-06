@@ -12,6 +12,10 @@ export const registerRoutes = [
       'GET /persons/:id': 'register.getPersonById',
       'POST /persons': 'register.createPerson',
       'PUT /persons/:id': 'register.editPerson',
+      'GET /truckTractors': 'register.getTruckTractors',
+      'GET /truckTractors/:id': 'register.getTruckTractorById',
+      'POST /truckTractors': 'register.createTruckTractor',
+      'PUT /truckTractors/:id': 'register.editTruckTractor',
     },
     mappingPolicy: 'all',
     requiredPermissions: {
@@ -24,6 +28,10 @@ export const registerRoutes = [
       'GET /persons/:id': 'C1',
       'POST /persons': 'C2',
       'PUT /persons/:id': 'C3',
+      'GET /truckTractors': 'D1',
+      'GET /truckTractors/:id': 'D1',
+      'POST /truckTractors': 'D2',
+      'PUT /truckTractors/:id': 'D3',
     },
     openapi: {
       security: [{ BearerAuth: [] }],
