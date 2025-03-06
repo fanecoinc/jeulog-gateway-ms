@@ -3,23 +3,74 @@ export const registerRoutes = [
     path: '/v1/register-ms',
     authorization: true,
     aliases: {
-      'GET /tags': 'register.getTags',
-      'GET /tags/:id': 'register.getTagById',
-      'POST /tags': 'register.createTag',
-      'PUT /tags/:id': 'register.editTag',
-      'DELETE /tags/:id': 'register.deleteTag',
-      'GET /persons': 'register.getPersons',
-      'GET /persons/:id': 'register.getPersonById',
-      'POST /persons': 'register.createPerson',
-      'PUT /persons/:id': 'register.editPerson',
-      'GET /truckTractors': 'register.getTruckTractors',
-      'GET /truckTractors/:id': 'register.getTruckTractorById',
-      'POST /truckTractors': 'register.createTruckTractor',
-      'PUT /truckTractors/:id': 'register.editTruckTractor',
-      'GET /carts': 'register.getCarts',
-      'GET /carts/:id': 'register.getCartById',
-      'POST /carts': 'register.createCart',
-      'PUT /carts/:id': 'register.editCart',
+      'GET /tags': {
+        action: 'register.getTags',
+        openapi: { tags: ['Tags'] },
+      },
+      'GET /tags/:id': {
+        action: 'register.getTagById',
+        openapi: { tags: ['Tags'] },
+      },
+      'POST /tags': {
+        action: 'register.createTag',
+        openapi: { tags: ['Tags'] },
+      },
+      'PUT /tags/:id': {
+        action: 'register.editTag',
+        openapi: { tags: ['Tags'] },
+      },
+      'DELETE /tags/:id': {
+        action: 'register.deleteTag',
+        openapi: { tags: ['Tags'] },
+      },
+      'GET /persons': {
+        action: 'register.getPersons',
+        openapi: { tags: ['Pessoas'] },
+      },
+      'GET /persons/:id': {
+        action: 'register.getPersonById',
+        openapi: { tags: ['Pessoas'] },
+      },
+      'POST /persons': {
+        action: 'register.createPerson',
+        openapi: { tags: ['Pessoas'] },
+      },
+      'PUT /persons/:id': {
+        action: 'register.editPerson',
+        openapi: { tags: ['Pessoas'] },
+      },
+      'GET /truckTractors': {
+        action: 'register.getTruckTractors',
+        openapi: { tags: ['Cavalos'] },
+      },
+      'GET /truckTractors/:id': {
+        action: 'register.getTruckTractorById',
+        openapi: { tags: ['Cavalos'] },
+      },
+      'POST /truckTractors': {
+        action: 'register.createTruckTractor',
+        openapi: { tags: ['Cavalos'] },
+      },
+      'PUT /truckTractors/:id': {
+        action: 'register.editTruckTractor',
+        openapi: { tags: ['Cavalos'] },
+      },
+      'GET /carts': {
+        action: 'register.getCarts',
+        openapi: { tags: ['Carretas'] },
+      },
+      'GET /carts/:id': {
+        action: 'register.getCartById',
+        openapi: { tags: ['Carretas'] },
+      },
+      'POST /carts': {
+        action: 'register.createCart',
+        openapi: { tags: ['Carretas'] },
+      },
+      'PUT /carts/:id': {
+        action: 'register.editCart',
+        openapi: { tags: ['Carretas'] },
+      },
     },
     mappingPolicy: 'all',
     requiredPermissions: {
@@ -43,7 +94,6 @@ export const registerRoutes = [
     },
     openapi: {
       security: [{ BearerAuth: [] }],
-      tags: ['Cadastros'],
     },
     onBeforeCall: async (ctx: any, _route: any, req: any, res: any) => {
       await ctx.service.authorize(ctx, req, res);
