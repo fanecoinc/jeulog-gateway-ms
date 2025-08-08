@@ -71,6 +71,26 @@ export const registerRoutes = [
         action: 'register.editCart',
         openapi: { tags: ['Carretas'] },
       },
+      'GET /truckSets': {
+        action: 'register.getTruckSets',
+        openapi: { tags: ['Conjuntos'] },
+      },
+      'GET /truckSets/:id': {
+        action: 'register.getTruckSetById',
+        openapi: { tags: ['Conjuntos'] },
+      },
+      'POST /truckSets': {
+        action: 'register.createTruckSet',
+        openapi: { tags: ['Conjuntos'] },
+      },
+      'PUT /truckSets/:id': {
+        action: 'register.editTruckSet',
+        openapi: { tags: ['Conjuntos'] },
+      },
+      'DELETE /truckSets/:id': {
+        action: 'register.deleteTruckSet',
+        openapi: { tags: ['Conjuntos'] },
+      },
     },
     mappingPolicy: 'all',
     requiredPermissions: {
@@ -91,6 +111,11 @@ export const registerRoutes = [
       'GET /carts/:id': 'D1',
       'POST /carts': 'D2',
       'PUT /carts/:id': 'D3',
+      'GET /truckSets': 'E1',
+      'GET /truckSets/:id': 'E1',
+      'POST /truckSets': 'E2',
+      'PUT /truckSets/:id': 'E3',
+      'DELETE /truckSets/:id': 'E3',
     },
     openapi: {
       security: [{ BearerAuth: [] }],
