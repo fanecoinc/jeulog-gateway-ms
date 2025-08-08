@@ -1,0 +1,3 @@
+Migrations do prisma para o projeto:
+> Pasta database
+> npx prisma migrate dev --name
