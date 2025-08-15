@@ -73,23 +73,23 @@ export const registerRoutes = [
       },
       'GET /truckSets': {
         action: 'register.getTruckSets',
-        openapi: { tags: ['Conjuntos'] },
+        openapi: { tags: ['Conjuntos (Incompleto)'] },
       },
       'GET /truckSets/:id': {
         action: 'register.getTruckSetById',
-        openapi: { tags: ['Conjuntos'] },
+        openapi: { tags: ['Conjuntos (Incompleto)'] },
       },
       'POST /truckSets': {
         action: 'register.createTruckSet',
-        openapi: { tags: ['Conjuntos'] },
+        openapi: { tags: ['Conjuntos (Incompleto)'] },
       },
       'PUT /truckSets/:id': {
         action: 'register.editTruckSet',
-        openapi: { tags: ['Conjuntos'] },
+        openapi: { tags: ['Conjuntos (Incompleto)'] },
       },
       'DELETE /truckSets/:id': {
         action: 'register.deleteTruckSet',
-        openapi: { tags: ['Conjuntos'] },
+        openapi: { tags: ['Conjuntos (Incompleto)'] },
       },
     },
     mappingPolicy: 'all',
